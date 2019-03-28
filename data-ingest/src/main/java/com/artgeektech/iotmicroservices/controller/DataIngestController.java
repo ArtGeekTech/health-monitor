@@ -1,8 +1,8 @@
 package com.artgeektech.iotmicroservices.controller;
 
 import com.artgeektech.iotmicroservices.Constants;
-import com.artgeektech.iotmicroservices.model.AirData;
-import com.artgeektech.iotmicroservices.model.AirInputData;
+import com.artgeektech.iotmicroservices.model.HealthMonitorData;
+import com.artgeektech.iotmicroservices.model.HealthMonitorRawData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Exchange;
@@ -38,35 +38,35 @@ public class DataIngestController {
 
 
 
-    @PostMapping("/airdata/ingest")  // validate payload from request body
-    public AirData ingest(@Valid @RequestBody AirInputData rawData) {
+    @PostMapping("/healthdata/ingest")  // validate payload from request body
+    public HealthMonitorData ingest(@Valid @RequestBody HealthMonitorRawData rawData) {
         // preprocess
-        AirData airData = preprocess(rawData);
+        HealthMonitorData healthData = preprocess(rawData);
 
         // publish to MQ
-        rabbitTemplate.convertAndSend(exchange.getName(), Constants.ROUTING_KEY_HISTORY, airData);
+        rabbitTemplate.convertAndSend(exchange.getName(), Constants.ROUTING_KEY_HISTORY, healthData);
 
-        rabbitTemplate.convertAndSend(exchange.getName(), Constants.ROUTING_KEY_REALTIME, airData);
+        rabbitTemplate.convertAndSend(exchange.getName(), Constants.ROUTING_KEY_REALTIME, healthData);
 
-        logger.info("ingested data: " + airData.toString());
-        return airData;
+        logger.info("ingested data: " + healthData.toString());
+        return healthData;
     }
 
 
 
-    private AirData preprocess(AirInputData rawData) {
-        AirData airData = new AirData();
+    private HealthMonitorData preprocess(HealthMonitorRawData rawData) {
+        HealthMonitorData healthData = new HealthMonitorData();
 
         // add more info from system
-        airData.setTimestamp(new Date());
+        healthData.setTimestamp(new Date());
 //        airData.setSensorId()...
 
         // standardize data format
-        airData.setHumidity(Math.round(rawData.getHumidity() * 100.0) / 100.0);
-        airData.setTemperature(Math.round(rawData.getTemperature() * 100.0) / 100.0);
-        airData.setCo2(Math.round(rawData.getCo2() * 100.0) / 100.0);
-        airData.setPm2p5(Math.round(rawData.getPm2p5() * 100.0) / 100.0);
+        healthData.setBloodPressure(Math.round(rawData.getBloodPressure() * 100.0) / 100.0);
+        healthData.setTemperature(Math.round(rawData.getTemperature() * 100.0) / 100.0);
+        healthData.setStepCount(rawData.getStepCount());
+        healthData.setHeartBeat(rawData.getHeartBeat());
 
-        return airData;
+        return healthData;
     }
 }

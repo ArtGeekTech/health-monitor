@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 public class DataConsumerApplication {
 
     @Bean
-    public Exchange airDataExchange() {
+    public Exchange healthDataExchange() {
         return new TopicExchange(Constants.EXCHANGE_NAME);
     }
 

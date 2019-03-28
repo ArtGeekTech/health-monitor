@@ -8,15 +8,15 @@
     <body onload="webSocket.disconnect()">
         <div>
             <div>
-                <button id="connect" onclick="webSocket.connect();">Connect</button>
+                <button id="connect" onclick="webSocket.connect();">Connect to Real Time Data</button>
                 <button id="disconnect" disabled="disabled" onclick="webSocket.disconnect();">
-                    Disconnect
+                    Clear the Dashboard
                 </button>
             </div>
             <br />
-            <div id="mural">
-                <input type="text" id="text" placeholder="Write a message..."/>
-                <button id="sendMessage" onclick="webSocket.sendMessage();">Send</button>
+            <div id="realtime">
+                <!--<input type="text" id="text" placeholder="Write a message..."/>-->
+                <!--<button id="sendMessage" onclick="webSocket.sendMessage();">Send</button>-->
                 <p id="response"></p>
             </div>
         </div> 

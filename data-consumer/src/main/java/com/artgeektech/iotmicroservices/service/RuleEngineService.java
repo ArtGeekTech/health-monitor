@@ -1,6 +1,6 @@
 package com.artgeektech.iotmicroservices.service;
 
-import com.artgeektech.iotmicroservices.model.AirData;
+import com.artgeektech.iotmicroservices.model.HealthMonitorData;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,20 +9,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class RuleEngineService {
 
-    public void applyRules(AirData airData) {
+    public void applyRules(HealthMonitorData data) {
 
-        if (airData.getTemperature() > 50) {
-            triggerActionAlert("Temperature too high!!");
+        if (data.getTemperature() > 50) {
+            triggerActionAlert("Temperature too high, pls cool down your body!!!");
         }
-        if (airData.getCo2() > 50) {
-            triggerActionAlert("CO2 too high!!!");
+        if (data.getStepCount() < 100) {
+            triggerActionAlert("StepCount too little, get up and work out!!!");
         }
-        if (airData.getPm2p5() > 50) {
-            triggerActionAlert("Too much Dust!!!");
+        if (data.getHeartBeat() > 50) {
+            triggerActionAlert("HeartBeat too high, pls see doctor!!!");
         }
     }
 
     private void triggerActionAlert(String msg) {
-        System.out.println("\n\n!!!!!Sending the Email Alert: " + msg + "\n\n");
+        System.out.println("\n\nAction Triggered! \n!!!!!Sending the Email Alert: " + msg + "\n\n");
     }
 }

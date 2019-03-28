@@ -1,6 +1,11 @@
 spring:
   application:
     name: data-dashboard
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 server:
   port: 9004                    # 指定该Eureka实例的端口

@@ -13,7 +13,7 @@ spring:
       database: airdata_db
 
 server:
-  port: 9002                    # 指定该Eureka实例的端口
+  port: 9003                    # 指定该Eureka实例的端口
 
 eureka:
   instance:

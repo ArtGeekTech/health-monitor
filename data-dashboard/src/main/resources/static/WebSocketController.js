@@ -7,13 +7,13 @@ class WebSocketController {
 	_onConnected(frame) {
         this.setConnected(true);
         console.log('Connected: ' + frame);
-        this.stompClient.subscribe('/topic/mural', this.showMessage);
+        this.stompClient.subscribe('/topic/realtime', this.showMessage);
 	}
 	
 	setConnected(connected) {
 	    document.getElementById('connect').disabled = connected;
 	    document.getElementById('disconnect').disabled = !connected;
-	    document.getElementById('mural').style.visibility = connected ? 'visible' : 'hidden';
+	    document.getElementById('realtime').style.visibility = connected ? 'visible' : 'hidden';
 	    document.getElementById('response').innerHTML = '';		
 	}
 	

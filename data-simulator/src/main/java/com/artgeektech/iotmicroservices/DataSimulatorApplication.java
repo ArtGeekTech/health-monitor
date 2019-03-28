@@ -1,6 +1,11 @@
 package com.artgeektech.iotmicroservices;
 
-import com.artgeektech.iotmicroservices.model.AirRawData;
+import com.artgeektech.iotmicroservices.model.HealthMonitorRawData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -8,9 +13,13 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@SpringBootApplication
+@EnableDiscoveryClient
 public class DataSimulatorApplication {
 
-    private static final String resourceUrl = "http://localhost:9001/airdata/ingest";
+    private static final Logger logger = LoggerFactory.getLogger(DataSimulatorApplication.class);
+
+    private static final String resourceUrl = "http://localhost:9001/healthdata/ingest";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final Random random = new Random();
     private static double minVal = 10;
@@ -19,16 +28,19 @@ public class DataSimulatorApplication {
     private static int interval = 1000;
 
     public static void main(String[] args) {
+        SpringApplication.run(DataSimulatorApplication.class, args);
 
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
 
-                AirRawData payload = new AirRawData(genRandom(), genRandom(), genRandom(), genRandom());
+                HealthMonitorRawData payload = new HealthMonitorRawData(genRandom(), genRandom(), (int)genRandom(), (int)genRandom());
 
-                HttpEntity<AirRawData> request = new HttpEntity<>(payload);
+                HttpEntity<HealthMonitorRawData> request = new HttpEntity<>(payload);
 
                 restTemplate.postForObject(resourceUrl, request, Object.class);
+
+                logger.info("POST to: " + resourceUrl + " with request: " + request.toString());
 
             }
         }, 0, interval);

@@ -1,8 +1,8 @@
 package com.artgeektech.iotmicroservices.controller;
 
 import com.artgeektech.iotmicroservices.Constants;
-import com.artgeektech.iotmicroservices.model.AirData;
-import com.artgeektech.iotmicroservices.repository.AirDataRepository;
+import com.artgeektech.iotmicroservices.model.HealthMonitorData;
+import com.artgeektech.iotmicroservices.repository.HealthMonitorDataDao;
 import com.artgeektech.iotmicroservices.service.RuleEngineService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,24 +18,24 @@ public class DataConsumerController {
     private static final Logger logger = LoggerFactory.getLogger(DataConsumerController.class);
 
     @Autowired
-    private AirDataRepository airDataRepository;
+    private HealthMonitorDataDao healthMonitorDataDao;
 
     @Autowired
     private RuleEngineService ruleEngineService;
 
 
     @RabbitListener(queues = Constants.QUEUE_NAME)  // Subscribe to the Message Queue
-    public void process(AirData airData) {
+    public void process(HealthMonitorData healthData) {
 
-        logger.info("Received message from MQ '{}'", airData);
+        logger.info("Received message from MQ '{}'", healthData);
 
         // apply rule engine and trigger actions
-        ruleEngineService.applyRules(airData);
+        ruleEngineService.applyRules(healthData);
 
         // save to DB
-        airDataRepository.save(airData);
+        healthMonitorDataDao.save(healthData);
 
-        logger.info("Saved message to Mongo DB '{}'", airData);
-        logger.info("Total message saved in Mongo DB is:  " + airDataRepository.findAll().size());
+        logger.info("Saved message to Mongo DB '{}'", healthData);
+        logger.info("Total message saved in Mongo DB is:  " + healthMonitorDataDao.findAll().size());
     }
 }

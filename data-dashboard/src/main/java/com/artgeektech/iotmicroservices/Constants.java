@@ -5,9 +5,11 @@ package com.artgeektech.iotmicroservices;
  */
 public class Constants {
 
-    public static final String EXCHANGE_NAME = "AirDataExchange";
+    public static final String EXCHANGE_NAME = "HealthMonitorDataExchange";
 
-    public static final String QUEUE_NAME = "AirDataQueue";
+    public static final String QUEUE_NAME = "HealthMonitorDataQueue";
 
-    public static final String ROUTING_KEY_HISTORY = "airdata.history";
+    public static final String ROUTING_KEY_HISTORY = "healthdata.history";
+
+    public static final String ROUTING_KEY_REALTIME = "healthdata.realtime";
 }
