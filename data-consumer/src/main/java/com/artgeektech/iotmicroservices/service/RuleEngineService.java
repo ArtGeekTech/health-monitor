@@ -24,5 +24,7 @@ public class RuleEngineService {
 
     private void triggerActionAlert(String msg) {
         System.out.println("\n\nAction Triggered! \n!!!!!Sending the Email Alert: " + msg + "\n\n");
+//        sendEmail
+//        sendText;
     }
 }

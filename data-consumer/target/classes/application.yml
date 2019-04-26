@@ -10,7 +10,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: airdata_db
+      database: healthdata_db
 
 server:
   port: 9003                    # 指定该Eureka实例的端口

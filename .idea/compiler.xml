@@ -7,13 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="serviceregistry" />
         <module name="data-consumer" />
         <module name="data-dashboard" />
         <module name="data-ingest" />
+        <module name="service-registry" />
         <module name="data-processor" />
         <module name="data-simulator" />
-        <module name="service-registry" />
-        <module name="serviceregistry" />
       </profile>
     </annotationProcessing>
   </component>
