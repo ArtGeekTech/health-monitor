@@ -16,26 +16,16 @@ import javax.validation.Valid;
 import java.util.Date;
 
 
-@RestController
+@RestController // == @Controller + @ResponseBody
 public class DataIngestController {
 
     private static final Logger logger = LoggerFactory.getLogger(DataIngestController.class);
-
-//    @Autowired
-//    private SimpMessagingTemplate messagingTemplate;
-
-
-//    @Autowired
-//    private RestTemplate restTemplate;
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
     private Exchange exchange;
-
-
-
 
 
     @PostMapping("/healthdata/ingest")  // validate payload from request body
@@ -53,13 +43,11 @@ public class DataIngestController {
     }
 
 
-
     private HealthMonitorData preprocess(HealthMonitorRawData rawData) {
         HealthMonitorData healthData = new HealthMonitorData();
 
         // add more info from system
         healthData.setTimestamp(new Date());
-//        airData.setSensorId()...
 
         // standardize data format
         healthData.setBloodPressure(Math.round(rawData.getBloodPressure() * 100.0) / 100.0);

@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HealthMonitorRawData implements Serializable {
+
     @NotNull
     @Min(1)
     @Max(100)

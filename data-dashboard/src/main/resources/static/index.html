@@ -1,24 +1,24 @@
 <html>
-    <head>
-        <title>Spring WebSocket Messaging</title>
-	    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-	    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-	    <script src="/WebSocketController.js"></script>
-    </head>
-    <body onload="webSocket.disconnect()">
-        <div>
-            <div>
-                <button id="connect" onclick="webSocket.connect();">Connect to Real Time Data</button>
-                <button id="disconnect" disabled="disabled" onclick="webSocket.disconnect();">
-                    Clear the Dashboard
-                </button>
-            </div>
-            <br />
-            <div id="realtime">
-                <!--<input type="text" id="text" placeholder="Write a message..."/>-->
-                <!--<button id="sendMessage" onclick="webSocket.sendMessage();">Send</button>-->
-                <p id="response"></p>
-            </div>
-        </div> 
-    </body>
+<head>
+    <title>Spring WebSocket Messaging</title>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/WebSocketController.js"></script>
+</head>
+<body onload="webSocket.disconnect()">
+<div>
+    <div>
+        <button id="connect" onclick="webSocket.connect();">Connect to Real Time Data</button>
+        <button id="disconnect" disabled="disabled" onclick="webSocket.disconnect();">
+            Clear the Dashboard
+        </button>
+    </div>
+    <br/>
+    <div id="realtime">
+        <!--<input type="text" id="text" placeholder="Write a message..."/>-->
+        <!--<button id="sendMessage" onclick="webSocket.sendMessage();">Send</button>-->
+        <p id="response"></p>
+    </div>
+</div>
+</body>
 </html>

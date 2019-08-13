@@ -33,6 +33,7 @@ public class DataDashboardApplication {
                 .to(dataExchange)
                 .with(Constants.ROUTING_KEY_REALTIME).noargs();
     }
+
     public static void main(String[] args) {
         SpringApplication.run(DataDashboardApplication.class, args);
     }

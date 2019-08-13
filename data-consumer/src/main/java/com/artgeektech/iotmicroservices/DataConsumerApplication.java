@@ -28,9 +28,9 @@ public class DataConsumerApplication {
     @Bean
     public Binding binding(Queue queue, Exchange dataExchange) {
         return BindingBuilder
-            .bind(queue)
-            .to(dataExchange)
-            .with(Constants.ROUTING_KEY_HISTORY).noargs();
+                .bind(queue)
+                .to(dataExchange)
+                .with(Constants.ROUTING_KEY_HISTORY).noargs();
     }
 
     public static void main(String[] args) {

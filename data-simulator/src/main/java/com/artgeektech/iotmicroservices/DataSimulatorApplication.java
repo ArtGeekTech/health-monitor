@@ -34,7 +34,7 @@ public class DataSimulatorApplication {
             @Override
             public void run() {
 
-                HealthMonitorRawData payload = new HealthMonitorRawData(genRandom(), genRandom(), (int)genRandom(), (int)genRandom());
+                HealthMonitorRawData payload = new HealthMonitorRawData(genRandom(), genRandom(), (int) genRandom(), (int) genRandom());
 
                 HttpEntity<HealthMonitorRawData> request = new HttpEntity<>(payload);
 
