@@ -19,7 +19,7 @@ public class DataSimulatorApplication {
 
     private static final Logger logger = LoggerFactory.getLogger(DataSimulatorApplication.class);
 
-    private static final String resourceUrl = "http://localhost:9001/healthdata/ingest";
+    private static final String resourceUrl = "http://localhost:9001/ingest/healthdata";
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final Random random = new Random();
     private static double minVal = 10;

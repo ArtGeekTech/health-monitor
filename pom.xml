@@ -13,6 +13,7 @@
         <module>data-simulator</module>
         <module>data-consumer</module>
         <module>data-dashboard</module>
+        <module>api-gateway</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -70,10 +71,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-starter-config</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -93,7 +90,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.0.1.RELEASE</version>
+            <version>2.0.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

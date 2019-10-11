@@ -9,7 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="serviceregistry" />
         <module name="data-consumer" />
+        <module name="api-gateway" />
         <module name="data-dashboard" />
+        <module name="apigateway" />
         <module name="data-ingest" />
         <module name="service-registry" />
         <module name="data-processor" />
@@ -19,6 +21,8 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="apigateway" options="-parameters" />
       <module name="data-consumer" options="-parameters" />
       <module name="data-dashboard" options="-parameters" />
       <module name="data-ingest" options="-parameters" />

@@ -28,7 +28,7 @@ public class DataIngestController {
     private Exchange exchange;
 
 
-    @PostMapping("/healthdata/ingest")  // validate payload from request body
+    @PostMapping("ingest/healthdata")  // validate payload from request body
     public HealthMonitorData ingest(@Valid @RequestBody HealthMonitorRawData rawData) {
         // preprocess
         HealthMonitorData healthData = preprocess(rawData);

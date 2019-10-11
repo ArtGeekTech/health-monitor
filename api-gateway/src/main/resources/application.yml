@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: zuul-api-gateway
+server:
+  port: 8080                    # 指定该Eureka实例的端口
+
+eureka:
+  instance:
+    hostname: zuul-api-gateway         # 指定该Eureka实例的主机名
+  client:
+    serviceUrl:
+      defaultZone: http://service-registry:8761/eureka/
+
+zuul:
+  routes:
+    ingest:
+      path: /ingest/**
+      url: http://localhost:9001/
+      stripPrefix: true
+    dashboard:
+      path: /dashboard/**
+      url: http://localhost:9004/
+      stripPrefix: true
